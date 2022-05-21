@@ -1,5 +1,5 @@
-import {ColorSelf} from "../modules/color.types";
-import colors from "../modules/color.constant";
+import {ColorSelf} from "../modules/color/color.types";
+import colors from "../modules/color/color.constant";
 
 const {reset} = colors;
 const output = (value:unknown, buffer:string[]) => [...buffer, value, reset].join("");

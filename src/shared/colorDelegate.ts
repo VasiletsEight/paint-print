@@ -1,5 +1,5 @@
-import {AllColors, ColorDelegate, CompareColorFunc} from "../modules/color.types";
-import colors from "../modules/color.constant";
+import {AllColors, ColorDelegate, CompareColorFunc} from "../modules/color/color.types";
+import colors from "../modules/color/color.constant";
 import color from "./color";
 
 const palette = ():ColorDelegate  => {

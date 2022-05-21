@@ -1,5 +1,5 @@
 import colors from "./color.constant";
-import {Mutable} from "./utility.type";
+import {Mutable} from "../utillity/utility.type";
 
 type Special = Omit<typeof colors, "reset" | "fg" | "bg">;
 type FgMutable = Mutable<typeof colors.fg>;
