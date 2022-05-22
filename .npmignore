@@ -1,0 +1,16 @@
+# IDE folder
+.idea
+
+# Dependency directories
+node_modules/
+
+# Ignore lock file
+yarn.lock
+package-lock.json
+
+# Ignore typescript folder
+src/
+
+# Ignore Typescript config files
+tslint.json
+tsconfig.json

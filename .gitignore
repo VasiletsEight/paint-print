@@ -1,0 +1,9 @@
+# IDE folder
+.idea
+
+# Dependency directories
+node_modules/
+
+# Generate output
+lib/
+types/
