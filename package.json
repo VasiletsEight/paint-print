@@ -12,6 +12,7 @@
     "start": "node dist",
     "start:dev": "ts-node src/index.ts",
     "prepublish": "tsc",
+    "publish": "publish",
     "lint": "tslint --project tsconfig.json"
   },
   "license": "MIT",

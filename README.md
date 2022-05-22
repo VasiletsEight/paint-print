@@ -4,11 +4,13 @@
 
 ## Install
 
-> npm install color-palette
+```
+npm install paint-print
 
-> yarn add color-palette
+yarn add paint-print
 
-> pnpm add color-palette
+pnpm add paint-print
+```
 
 ## Usage
 
