@@ -7,21 +7,33 @@
   "scripts": {
     "start": "node dist",
     "start:dev": "ts-node src/index.ts",
+    "test": "mocha -r ts-node/register tests/**/*.ts",
     "prepublish": "tsc",
     "lint": "tslint --project tsconfig.json"
   },
   "license": "MIT",
-  "keywords": ["chalk", "color", "colors", "print-color", "paint-print"],
+  "keywords": [
+    "chalk",
+    "color",
+    "colors",
+    "print-color",
+    "paint-print"
+  ],
   "homepage": "https://github.com/VasiletsFour/paint-print#readme",
   "bugs": {
-    "url" : "https://github.com/VasiletsFour/paint-print/issues",
-    "email" : "vasilets.seven@gmail.com"
+    "url": "https://github.com/VasiletsFour/paint-print/issues",
+    "email": "vasilets.seven@gmail.com"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/VasiletsFour/paint-print.git"
   },
   "devDependencies": {
+    "@types/chai": "^4.3.1",
+    "@types/mocha": "^9.1.1",
+    "@types/node": "^17.0.35",
+    "chai": "^4.3.6",
+    "mocha": "^10.0.0",
     "node": "^17.7.2",
     "ts-node": "^10.8.0",
     "tslint": "^6.1.3",
