@@ -1,7 +1,7 @@
 {
   "name": "paint-print",
   "author": "Slava Vasilets",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "lib/index.js",
   "module": "lib",
   "types": "types",
@@ -12,7 +12,6 @@
     "start": "node dist",
     "start:dev": "ts-node src/index.ts",
     "prepublish": "tsc",
-    "publish": "publish",
     "lint": "tslint --project tsconfig.json"
   },
   "license": "MIT",
