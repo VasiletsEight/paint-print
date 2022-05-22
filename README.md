@@ -13,18 +13,18 @@
 ## Usage
 
 ```
-import palette from 'color-palette';
+import {paint} from 'color-palette';
  
-console.log(palette.red("Hello world!!!"));
-console.log(palette.greenBg("Hello world!!!"));
+console.log(paint.red("Hello world!!!"));
+console.log(paint.greenBg("Hello world!!!"));
 ```
 
 ### You can use call chain:
 
 ```
-import palette from 'color-palette';
+import {paint} from 'color-palette';
 
-console.log(palette.blue.yellowBg("Hello world!!!"));
+console.log(paint.blue.yellowBg("Hello world!!!"));
 ```
 
 ### Define your own themes:
@@ -32,10 +32,10 @@ console.log(palette.blue.yellowBg("Hello world!!!"));
 
 
 ```
-import palette from 'color-palette';
+import {paint} from 'color-palette';
 
-const warning = palette.yellow;
-const error = palette.redBg;
+const warning = paint.yellow;
+const error = paint.redBg;
 
 console.log(warning("Warning"));
 console.log(error("Error"));
