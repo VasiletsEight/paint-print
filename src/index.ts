@@ -1,2 +1,2 @@
-export * from "./shared/colorDelegate";
-export * from "./shared/colorDelegateChalk";
+export * from "./shared/index";
+export * from "./modules/index";

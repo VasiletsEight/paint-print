@@ -1,0 +1,1 @@
+export {ColorDelegate} from "./color/color.types";

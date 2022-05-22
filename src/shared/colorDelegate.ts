@@ -2,7 +2,7 @@ import {AllColors, ColorDelegate, CompareColorFunc} from "../modules/color/color
 import colors from "../modules/color/color.constant";
 import color from "./color";
 
-const palette = ():ColorDelegate  => {
+export const paint = (function ():ColorDelegate{
     const buffer:string[] = [];
     const {fg, bg ,reset, ...remainingColors} = colors;
     const allColors:AllColors = {...fg, ...bg, ...remainingColors};
@@ -22,6 +22,4 @@ const palette = ():ColorDelegate  => {
     }
 
     return  new Proxy(compareFuncColor, proxyHandler) as ColorDelegate;
-}
-
-export default palette();
+}())
