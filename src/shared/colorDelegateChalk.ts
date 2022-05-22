@@ -1,17 +1,17 @@
-import {AllColors, ColorDelegate, ColorFunc} from "../modules/color/color.types";
+import {AllColors, ColorDelegate} from "../modules/color/color.types";
 import colors from "../modules/color/color.constant";
-import color from "./color";
+import {output} from "./output";
 
-const colorDelegateChalk = ():ColorDelegate => {
-    const buffer:string[] = [];
+export const colorDelegateChalk = (function():ColorDelegate {
     const {fg, bg ,reset, ...remainingColors} = colors;
     const allColors:AllColors = {...fg, ...bg, ...remainingColors};
-    const colorOutput = color.bind({buffer});
+    const colorOutput = function (this:any, value:unknown) {
+        return output.call(this, value)
+    }
+    const getColor = function(this:any, pushColor:string){
+        const buffer = [...this?.buffer || [], pushColor]
 
-    const getColor = function(this:ColorFunc, pushColor:string){
-        buffer.push(pushColor);
-
-        return this;
+        return this.bind({buffer});
     }
 
     Object.keys(allColors).forEach((key:string)=>Object.defineProperty(colorOutput, key,{
@@ -21,6 +21,4 @@ const colorDelegateChalk = ():ColorDelegate => {
     }))
 
     return colorOutput as ColorDelegate;
-}
-
-export default colorDelegateChalk();
+}())

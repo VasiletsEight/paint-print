@@ -1,19 +1,20 @@
-import {AllColors, ColorDelegate, CompareColorFunc} from "../modules/color/color.types";
+import {AllColors, ColorDelegate} from "../modules/color/color.types";
 import colors from "../modules/color/color.constant";
-import color from "./color";
+import {output} from "./output";
 
 export const paint = (function ():ColorDelegate{
-    const buffer:string[] = [];
     const {fg, bg ,reset, ...remainingColors} = colors;
     const allColors:AllColors = {...fg, ...bg, ...remainingColors};
-    const colorOutput = color.bind({buffer});
+    const colorOutput = function (this:any, value:unknown) {
+        return output.call(this, value)
+    }
     const compareFuncColor = Object.assign(colorOutput, allColors);
 
     const proxySet = ():false => false;
-    const proxyGet =  (target:CompareColorFunc, key:string, receiver:ColorDelegate):ColorDelegate => {
-        buffer.push(target[key]);
+    const proxyGet =  (target:ColorDelegate, key:string):ColorDelegate => {
+        const buffer = [...target?.buffer || [], target[key]];
 
-        return receiver;
+        return target.bind({buffer});
     }
 
     const proxyHandler={
@@ -21,5 +22,5 @@ export const paint = (function ():ColorDelegate{
         set:proxySet
     }
 
-    return  new Proxy(compareFuncColor, proxyHandler) as ColorDelegate;
+    return new Proxy(compareFuncColor, proxyHandler) as ColorDelegate;
 }())
