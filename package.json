@@ -1,13 +1,9 @@
 {
   "name": "paint-print",
   "author": "Slava Vasilets",
-  "version": "0.0.2",
+  "version": "0.0.5",
   "main": "lib/index.js",
-  "module": "lib",
-  "types": "types",
-  "files": [
-    "lib"
-  ],
+  "types": "types/index.d.ts",
   "scripts": {
     "start": "node dist",
     "start:dev": "ts-node src/index.ts",
@@ -15,6 +11,16 @@
     "lint": "tslint --project tsconfig.json"
   },
   "license": "MIT",
+  "keywords": ["chalk", "color", "colors", "print-color", "paint-print"],
+  "homepage": "https://github.com/VasiletsFour/paint-print#readme",
+  "bugs": {
+    "url" : "https://github.com/VasiletsFour/paint-print/issues",
+    "email" : "vasilets.seven@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VasiletsFour/paint-print.git"
+  },
   "devDependencies": {
     "node": "^17.7.2",
     "ts-node": "^10.8.0",
