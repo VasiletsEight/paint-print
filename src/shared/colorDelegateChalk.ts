@@ -9,8 +9,9 @@ export const colorDelegateChalk = (function ():ColorDelegate {
     const allColors:AllColors = {...fg, ...bg, ...remainingColors};
 
     const colorOutput = function (value: unknown) {
-        const clone = structuredClone(buffer)
-        buffer.length = 0
+        const clone = [...buffer];
+        buffer.length = 0;
+
         return output.call({__buffer:clone}, value)
     } as ColorDelegate
 

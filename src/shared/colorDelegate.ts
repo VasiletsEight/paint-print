@@ -9,7 +9,7 @@ export const paint = (function (): ColorDelegate {
     const allColors: AllColors = {...fg, ...bg, ...remainingColors};
 
     const colorOutput:ColorOutput = function ( value: unknown) {
-        const clone = structuredClone(buffer);
+        const clone = [...buffer];
         buffer.length = 0;
 
         return output.call({__buffer:clone}, value)
