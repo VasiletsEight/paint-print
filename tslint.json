@@ -10,6 +10,7 @@
     "no-var-requires": true,
     "prefer-for-of": true,
     "no-eval": true,
+    "only-arrow-functions": false,
     "no-implicit-dependencies": true,
     "triple-equals": true,
     "max-line-length": {
