@@ -9,10 +9,13 @@ describe("Test paint-print", function() {
         const warning = paint.yellow;
         const successful = paint.green
         const error = paint.red;
-        console.log(warning("Hello world"), "Default");
+
+        console.info(successful("Hello world!!!"), "Default")
+        console.warn(warning("Hello world"), "Default");
         console.log(error("Hello world"),  "Default");
         console.timeEnd("Default")
-        expect("ff0000").to.equal("ff0000");
+
+        expect(successful("Default")).to.equal("\x1b[32mDefault\x1b[0m");
     });
 
     it("Test Chalk", function (){
@@ -20,9 +23,12 @@ describe("Test paint-print", function() {
         const warning = colorDelegateChalk.yellow;
         const successful = colorDelegateChalk.green;
         const error = colorDelegateChalk.red;
-        console.log(warning("Hello world"), "Chalk");
+
+        console.info(successful("Hello world!!!"), "Chalk")
+        console.warn(warning("Hello world"), "Chalk");
         console.log(error("Hello world"), "Chalk");
         console.timeEnd("Chalk");
-        expect("ff0000").to.equal("ff0000");
+
+        expect(successful("Chalk")).to.equal("\x1b[32mChalk\x1b[0m");
     });
 });
