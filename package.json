@@ -1,7 +1,7 @@
 {
   "name": "paint-print",
   "author": "Slava Vasilets",
-  "version": "0.1.1",
+  "version": "0.1.4",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
