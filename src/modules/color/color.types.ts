@@ -7,17 +7,17 @@ type BgMutable = Mutable<typeof colors.bg>;
 type Colors = FgMutable & BgMutable & Special;
 type KeyFgAndBg = keyof Colors;
 
-export type ColorFunc = (value:unknown)=> string;
-export type CompareColorFunc =  ColorFunc & AllColors;
+export type ColorOutput = (value:unknown)=> string;
+export type CompareColorOutput =  ColorOutput & AllColors;
 
 export type ColorDelegate  = {
     readonly [K in KeyFgAndBg]:ColorDelegate;
-} & CompareColorFunc;
+} & CompareColorOutput;
 
 export interface AllColors{
     [key:string]:string;
 }
 
 export interface ColorSelf{
-    buffer:string[]
+    __buffer:string[]
 }
