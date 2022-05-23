@@ -16,8 +16,15 @@
     "chalk",
     "color",
     "colors",
+    "print",
+    "paint",
     "print-color",
-    "paint-print"
+    "paint-print",
+    "ansi",
+    "terminal",
+    "console",
+    "style",
+    "styles"
   ],
   "homepage": "https://github.com/VasiletsFour/paint-print#readme",
   "bugs": {
