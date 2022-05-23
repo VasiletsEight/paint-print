@@ -43,26 +43,14 @@ console.log(error("Error"));
 
 ## Colors
 
-### Front output
-
-- black
-- red
-- green
-- yellow
-- blue
-- magenta
-- cyan
-- white
-- crimson
-
-### Background colors
-
-- blackBg
-- redBg
-- greenBg
-- yellowBg
-- blueBg
-- magentaBg
-- cyanBg
-- whiteBg
-- crimsonBg
+| Front colors | Background colors |
+|--------------|-------------------|
+| black        | blackBg           |
+| red          | redBg             |
+| greenBg      | greenBg           |
+| yellow       | yellowBg          |
+| blue         | blueBg            |
+| magenta      | magentaBg         |
+| cyan         | cyanBg            |
+| white        | whiteBg           |
+|  crimson     | crimsonBg         |
