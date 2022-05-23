@@ -1,4 +1,4 @@
-# output-palette
+# paint-print
 
 >JavaScript library for immutable output conversion in console
 
@@ -15,7 +15,7 @@ pnpm add paint-print
 ## Usage
 
 ```
-import {paint} from 'output-palette';
+import {paint} from 'paint-print';
  
 console.log(paint.red("Hello world!!!"));
 console.log(paint.greenBg("Hello world!!!"));
@@ -24,17 +24,15 @@ console.log(paint.greenBg("Hello world!!!"));
 ### You can use call chain:
 
 ```
-import {paint} from 'output-palette';
+import {paint} from 'paint-print';
 
 console.log(paint.blue.yellowBg("Hello world!!!"));
 ```
 
 ### Define your own themes:
 
-
-
 ```
-import {paint} from 'output-palette';
+import {paint} from 'paint-print';
 
 const warning = paint.yellow;
 const error = paint.redBg;
