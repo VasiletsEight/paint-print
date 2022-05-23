@@ -4,5 +4,5 @@ import colors from "../modules/color/color.constant";
 const {reset} = colors;
 
 export function output (this:ColorSelf, value:unknown) {
-    return [...this.buffer, value, reset].join("");
+    return [...this.__buffer, value, reset].join("");
 }
