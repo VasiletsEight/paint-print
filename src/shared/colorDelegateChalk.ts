@@ -5,13 +5,13 @@ import {output} from "./output";
 export const colorDelegateChalk = (function():ColorDelegate {
     const {fg, bg ,reset, ...remainingColors} = colors;
     const allColors:AllColors = {...fg, ...bg, ...remainingColors};
+
     const colorOutput = function (this:any, value:unknown) {
         return output.call(this, value)
     }
-    const getColor = function(this:any, pushColor:string){
-        const buffer = [...this?.buffer || [], pushColor]
 
-        return this.bind({buffer});
+    const getColor = function(this:any, pushColor:string){
+        return this.bind({buffer:[...this?.buffer || [], pushColor]});
     }
 
     Object.keys(allColors).forEach((key:string)=>Object.defineProperty(colorOutput, key,{
