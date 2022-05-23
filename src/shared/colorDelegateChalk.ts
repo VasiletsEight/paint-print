@@ -14,7 +14,7 @@ export const colorDelegateChalk = (function ():ColorDelegate {
         return output.call({__buffer:clone}, value)
     } as ColorDelegate
 
-    const getColor = function(this:any, pushColor:string){
+    const getColor = function(this:ColorDelegate, pushColor:string){
         buffer.push(pushColor);
 
         return this;

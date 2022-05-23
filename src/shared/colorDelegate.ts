@@ -8,16 +8,16 @@ export const paint = (function (): ColorDelegate {
     const {fg, bg, reset, ...remainingColors} = colors;
     const allColors: AllColors = {...fg, ...bg, ...remainingColors};
 
-    const colorOutput:ColorOutput = function (this: any, value: unknown) {
+    const colorOutput:ColorOutput = function ( value: unknown) {
         const clone = structuredClone(buffer);
         buffer.length = 0;
 
         return output.call({__buffer:clone}, value)
     }
-    const compareFuncColor = Object.assign(colorOutput, allColors, {__buffer:[]}) as any;
+    const compareFuncColor = Object.assign(colorOutput, allColors) as ColorDelegate;
 
     const proxySet = () => {return false};
-    const proxyGet = (target:any, key: string, receiver:any):any => {
+    const proxyGet = (target:ColorDelegate, key: string, receiver:ColorDelegate):ColorDelegate => {
         buffer.push(target[key]);
 
         return receiver
