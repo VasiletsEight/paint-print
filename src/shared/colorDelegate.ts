@@ -4,7 +4,7 @@ import {output} from "./output";
 import {createProxy} from "./createPrxoy";
 import {ProxyBoundArgs} from "../modules/proxy/proxy.type";
 
-export const colorDelegate = (): ColorDelegate => {
+export const paint = (function (): ColorDelegate {
     const {fg, bg, reset, ...remainingColors} = colors;
     const allColors: AllColors = {...fg, ...bg, ...remainingColors};
 
@@ -20,4 +20,4 @@ export const colorDelegate = (): ColorDelegate => {
     };
 
     return createProxy.call<ColorSelf, ProxyBoundArgs, ColorDelegate>({_buffer: []}, compareFuncColor(), proxyGet, proxySet);
-}
+}())
