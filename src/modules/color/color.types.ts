@@ -19,5 +19,5 @@ export interface AllColors{
 }
 
 export interface ColorSelf{
-    __buffer:string[]
+    _buffer:string[]
 }
