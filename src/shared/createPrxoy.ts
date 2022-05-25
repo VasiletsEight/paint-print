@@ -1,9 +1,9 @@
 import {GetProxy, SetProxy} from "../modules/proxy/proxy.type";
 
-export function createProxy<T extends {}, C extends {} = {}>(target: T, getProxy: GetProxy<T>, setProxy: SetProxy, context: C): T {
+export function createProxy<T extends {}, C extends {} = {}>(this: C, target: T, getProxy: GetProxy<T>, setProxy: SetProxy): T {
     const proxyHandler = {
-        get: getProxy.bind({...context}),
-        set: setProxy.bind({...context})
+        get: getProxy.bind(this),
+        set: setProxy.bind(this)
     }
 
     return new Proxy(target, proxyHandler);
