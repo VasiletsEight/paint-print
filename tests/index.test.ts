@@ -1,24 +1,10 @@
 import {describe, it} from "mocha"
 import {paint} from "../src";
-import {colorDelegateChalk} from "../src/shared/colorDelegateChalk";
 import {expect} from "chai";
+import {redefineError, redefineInfo, redefineWarn} from "../src/shared";
+import {anotherPaint} from "../src/shared/colorDelegateChalk";
 
 describe("Test paint-print", function() {
-    it("Test Chalk", function (){
-        // console.time("Chalk");
-        // const warning = colorDelegateChalk.yellow;
-        // const successful = colorDelegateChalk.green;
-        // const error = colorDelegateChalk.red;
-        //
-        // console.log(colorDelegateChalk.yellow.blueBg("Hello world!!!"), "Chalk");
-        // console.info(colorDelegateChalk.green("Hello world!!!"), "Chalk");
-        // console.warn(warning("Hello world"), "Chalk");
-        // console.log(error("Hello world"), "Chalk");
-        // console.timeEnd("Chalk");
-
-        // expect(successful("Chalk")).to.equal("\x1b[32mChalk\x1b[0m");
-    });
-
     it("Test paint", function() {
         console.time("Default")
         const warning = paint.yellow;
@@ -32,5 +18,32 @@ describe("Test paint-print", function() {
         console.timeEnd("Default")
 
         expect(successful("Default")).to.equal("\x1b[32mDefault\x1b[0m");
+    });
+
+    it("Test another paint", function() {
+        console.time("AnotherPaint")
+        const warning = anotherPaint.yellow;
+        const successful = anotherPaint.green
+        const error = anotherPaint.red;
+
+        console.log(anotherPaint.blackBg.red("Hello world!!!"), "AnotherPaint");
+        console.info(anotherPaint.black("Hello world!!!"), "AnotherPaint")
+        console.warn(warning("Hello world"), "AnotherPaint");
+        console.log(successful("Hello world"),  "AnotherPaint");
+        console.timeEnd("AnotherPaint")
+    });
+
+    it("Test redefine", function() {
+        console.warn("Warning");
+        console.error("Error");
+        console.info("Info");
+
+        redefineWarn();
+        redefineError();
+        redefineInfo();
+
+        console.warn("Warning");
+        console.error("Error");
+        console.info("Info");
     });
 });
