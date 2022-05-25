@@ -8,9 +8,9 @@ export const paint = (function (): ColorDelegate {
     const {fg, bg, reset, ...remainingColors} = colors;
     const allColors: AllColors = {...fg, ...bg, ...remainingColors};
 
-    const compareFuncColor = (buffer: string[] = []): ColorDelegate => {
-        return Object.assign(output.bind({_buffer: buffer}), allColors) as ColorDelegate;
-    }
+    const compareFuncColor = (buffer: string[] = []): ColorDelegate => (
+        Object.assign(output.bind({_buffer: buffer}), allColors) as ColorDelegate
+    )
 
     const proxySet = () => false;
     const proxyGet = function (this: ColorSelf, target: ColorDelegate, key: string): ColorDelegate {
