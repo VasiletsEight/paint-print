@@ -1,13 +1,13 @@
 {
   "name": "paint-print",
   "author": "Slava Vasilets",
-  "version": "0.1.6-0",
+  "version": "0.1.6",
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
     "start": "node dist",
     "start:dev": "ts-node src/index.ts",
-    "test": "mocha -r ts-node/register tests/**/*.ts",
+    "test": "mocha -r ts-node/register tests/test.ts",
     "prepublish": "tsc",
     "lint": "tslint --project tsconfig.json"
   },
