@@ -1,6 +1,2 @@
-import {colorDelegate} from "./shared";
-
-export {redefineInfo, redefineWarn, colorDelegate} from "./shared"
+export {redefineInfo, redefineWarn, paint} from "./shared"
 export * from "./modules/index";
-
-export const paint = colorDelegate();
