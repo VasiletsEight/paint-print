@@ -1,1 +1,2 @@
-export * from "./colorDelegate"
+export * from "./colorDelegate";
+export * from "./redefineConsole";
