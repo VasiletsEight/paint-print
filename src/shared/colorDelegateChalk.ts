@@ -2,30 +2,22 @@ import {ColorDelegate} from "../modules";
 import colors from "../modules/color/color.constant";
 import {AllColors} from "../modules/color/color.types";
 import {output} from "./output";
+import {definePropertyObject} from "./definePropertyObject";
+import {DefinePropertyBound} from "../modules/defineProperty/defineProperty.type";
 
-export const colorDelegateChalk = (function ():ColorDelegate {
-    const buffer:string[] = [];
-    const {fg, bg ,reset, ...remainingColors} = colors;
-    const allColors:AllColors = {...fg, ...bg, ...remainingColors};
+const {fg, bg ,reset, ...remainingColors} = colors;
+const allColors:AllColors = {...fg, ...bg, ...remainingColors};
 
-    const colorOutput = function (value: unknown) {
-        const clone = [...buffer];
-        buffer.length = 0;
+function colorDelegateChalk (buffer:string[]=[]):ColorDelegate {
+    const colorOutput = output.bind({_buffer:buffer}) as ColorDelegate;
 
-        return output.call({__buffer:clone}, value)
-    } as ColorDelegate
-
-    const getColor = function(this:ColorDelegate, pushColor:string){
-        buffer.push(pushColor);
-
-        return this;
+    const getColor = function(this:DefinePropertyBound<ColorDelegate>){
+        return colorDelegateChalk([...buffer, allColors[this.key]]);
     }
 
-    Object.keys(allColors).forEach((key:string)=>Object.defineProperty(colorOutput, key,{
-        enumerable: false,
-        configurable:false,
-        get:getColor.bind(colorOutput, allColors[key])
-    }))
+    definePropertyObject(colorOutput, Object.keys(allColors), getColor)
 
     return colorOutput;
-}())
+}
+
+export const anotherPaint = colorDelegateChalk();
