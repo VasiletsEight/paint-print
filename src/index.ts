@@ -1,2 +1,2 @@
-export {redefineInfo, redefineWarn, paint} from "./shared"
+export {paint} from "./shared"
 export * from "./modules/index";
