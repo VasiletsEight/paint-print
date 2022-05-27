@@ -1,1 +1,1 @@
-export * from "./colorDelegate";
+export {paint} from "./paint";
