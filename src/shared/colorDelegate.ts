@@ -1,23 +1,16 @@
-import {AllColors, ColorDelegate, ColorSelf} from "../modules/color/color.types";
-import colors from "../modules/color/color.constant";
 import {output} from "./output";
-import {createProxy} from "./createPrxoy";
-import {ProxyBoundArgs} from "../modules/proxy/proxy.type";
+import {proxySet, spreadColors} from "./paint";
+import {ColorDelegate} from "../modules";
 
-export const paint = (function (): ColorDelegate {
-    const {fg, bg, reset, ...remainingColors} = colors;
-    const allColors: AllColors = {...fg, ...bg, ...remainingColors};
+export const colorDelegate = (_buffer: string = ""): ColorDelegate => {
+    const colorOutput = (input: unknown) => (output.call({_buffer}, input));
+    const compareColor = Object.assign(colorOutput, spreadColors);
 
-    const compareFuncColor = (buffer: string[] = []): ColorDelegate => (
-        Object.assign(output.bind({_buffer: buffer}), allColors) as ColorDelegate
-    )
+    const proxyGet = (target: ColorDelegate, key: string, receiver: ColorDelegate) => {
+        _buffer += target[key];
+        return receiver
+    }
 
-    const proxySet = () => false;
-    const proxyGet = function (this: ColorSelf, target: ColorDelegate, key: string): ColorDelegate {
-        const _buffer = [...this._buffer, target[key]];
+    return new Proxy(compareColor as ColorDelegate, {get: proxyGet, set: proxySet})
+}
 
-        return createProxy.call<ColorSelf, ProxyBoundArgs, ColorDelegate>({_buffer}, compareFuncColor(_buffer), proxyGet, proxySet);
-    };
-
-    return createProxy.call<ColorSelf, ProxyBoundArgs, ColorDelegate>({_buffer: []}, compareFuncColor(), proxyGet, proxySet);
-}())
