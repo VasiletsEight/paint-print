@@ -1,11 +1,13 @@
-import {describe} from "mocha"
+import {describe, Done} from "mocha"
 import {paintTest} from "./shared/paint.test";
 import {paint} from "../src";
 
+const testInput = (done: Done) => paintTest(done, paint, "After Default paint")
+
 describe("Test paint-print", function () {
-    beforeEach("Before Test paint", (done) => paintTest(done, paint, "After Default paint"));
+    beforeEach("Before Test paint", testInput);
 
-    Array.from({length: 10}, (_, i) => i).forEach(() => it("It Test paint", (done) => paintTest(done, paint, "It Default paint")))
+    Array.from(Array(10).keys()).forEach(() => it("It Test paint", testInput))
 
-    afterEach("After Test paint", (done) => paintTest(done, paint, "After Default paint"));
+    afterEach("After Test paint", testInput);
 });
