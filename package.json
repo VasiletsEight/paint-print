@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node lib",
     "start:dev": "ts-node --transpile-only src/index.ts",
-    "test": "mocha -r ts-node/register tests/index.test.ts",
+    "test": "mocha -r ts-node/register test/index.test.ts",
     "prepublish": "tsc",
     "lint": "tslint --project tsconfig.json"
   },
